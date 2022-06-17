@@ -13,6 +13,7 @@ public class Cliente {
 	}
 
 	public double montoDeProductos() {
+
 		return this.carrito.montoTotalDeCarrito();
 	}
 }

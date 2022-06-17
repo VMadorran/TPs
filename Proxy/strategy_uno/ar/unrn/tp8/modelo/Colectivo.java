@@ -2,12 +2,12 @@ package ar.unrn.tp8.modelo;
 
 public class Colectivo implements MetodoDeEnvio {
 
-	public static final double PORCENTAJE_ADICIONAL = 0.15;
+	public static final double ADICIONAL_PRODUCTO = 175;
 
 	@Override
 	public double calcularCostoDeEnvio(int cantidad) {
 		// TODO Auto-generated method stub
-		return cantidad * PORCENTAJE_ADICIONAL;
+		return cantidad * ADICIONAL_PRODUCTO;
 	}
 
 }

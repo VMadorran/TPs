@@ -12,20 +12,21 @@ public class Carrito {
 	}
 
 	public int cantidadDeElementos() {
-		int cantidadTotal = 0;
 
-		for (Producto producto : this.productos) {
-			cantidadTotal += producto.cantidadDelProducto();
+		int montoTotal = 0;
+
+		for (Producto producto : productos) {
+			montoTotal = montoTotal + producto.cantidadDelProducto();
 		}
-		return cantidadTotal;
+
+		return montoTotal;
 	}
 
 	public double montoTotalDeCarrito() {
-
 		double montoTotal = 0;
 
-		for (Producto producto : this.productos) {
-			montoTotal += producto.montoTotalDeProducto();
+		for (Producto producto : productos) {
+			montoTotal = montoTotal + producto.montoTotalDeProducto();
 		}
 		return montoTotal;
 	}

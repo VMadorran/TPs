@@ -11,8 +11,7 @@ public class Sistema {
 
 	public double calcularMontoYEnvioTotal(Cliente cliente) {
 		double montoTotal = 0;
-
-		montoTotal = metodo.calcularCostoDeEnvio(cliente.cantidadDeElementosEnCarro()) + cliente.montoDeProductos();
+		montoTotal = (metodo.calcularCostoDeEnvio(cliente.cantidadDeElementosEnCarro())) + (cliente.montoDeProductos());
 
 		return montoTotal;
 	}

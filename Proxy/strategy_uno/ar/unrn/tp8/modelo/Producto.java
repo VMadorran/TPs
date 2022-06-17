@@ -3,12 +3,10 @@ package ar.unrn.tp8.modelo;
 public class Producto {
 
 	private int cantidad;
-	private String descripcion;
 	private double precioUnitario;
 
-	public Producto(int cantidad, String descripcion, double precioUnotario) {
+	public Producto(int cantidad, double precioUnitario) {
 		this.cantidad = cantidad;
-		this.descripcion = descripcion;
 		this.precioUnitario = precioUnitario;
 	}
 
@@ -17,6 +15,8 @@ public class Producto {
 	}
 
 	public double montoTotalDeProducto() {
+		
 		return this.cantidad * this.precioUnitario;
+
 	}
 }

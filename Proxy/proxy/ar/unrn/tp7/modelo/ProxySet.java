@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class ProxySet implements Set<Telefono> {
@@ -18,7 +19,7 @@ public class ProxySet implements Set<Telefono> {
 	protected static String DB = "proxy";
 	protected static String user = "root";
 	protected static String pass = "";
-	protected static Connection conn = null;
+	protected static Connection conn;
 
 	public ProxySet(int idPersona) {
 		super();
@@ -51,7 +52,7 @@ public class ProxySet implements Set<Telefono> {
 	}
 
 	@Override
-	public Object[] toArray() {// Implementar
+	public Object[] toArray() {
 		// TODO Auto-generated method stub
 
 		return null;
@@ -60,10 +61,11 @@ public class ProxySet implements Set<Telefono> {
 	@Override
 	public <T> T[] toArray(T[] a) {
 		// TODO Auto-generated method stub
-		return null;
+
+		List<Telefono> telefonos = new TelefonoDao().telefonosPorId(idPersona);
+		return (T[]) telefonos.toArray(new Telefono[telefonos.size()]);
 	}
 
-	
 	@Override
 	public boolean add(Telefono e) {
 		// TODO Auto-generated method stub
@@ -107,46 +109,4 @@ public class ProxySet implements Set<Telefono> {
 
 	}
 
-	public static Connection obtenerConexion() {
-
-		try {
-			conn = DriverManager.getConnection(URL_DB + DB + "?useSSL=false", user, pass);
-		} catch (SQLException sqlEx) {
-			System.out.println("No se ha podido conectar a " + URL_DB + DB + ". " + sqlEx.getMessage());
-			System.out.println("Error al cargar el driver");
-		}
-		return conn;
-//Utilice aquí su motor de BD preferido
-	}
-
-	private static void disconnect() {
-		if (conn != null) {
-			try {
-				conn.close();
-				conn = null;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public Set<Telefono> telefonosPorId(int id) {
-
-		Set<Telefono> telefonos = new HashSet<Telefono>();
-		String sql = "select numero from telefonos" + "where id_persona=?;";
-		try (Connection conn = obtenerConexion(); PreparedStatement statement = conn.prepareStatement(sql);) {
-			statement.setInt(1, id);
-			ResultSet result = statement.executeQuery();
-			while (result.next()) {
-				telefonos.add(new Telefono(result.getString(1)));
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return telefonos;
-
-	}
 }
