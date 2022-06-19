@@ -14,12 +14,6 @@ import java.util.Set;
 public class ProxySet implements Set<Telefono> {
 
 	private int idPersona;
-	private String DRIVER = "com.mysql.jdbc.Driver";
-	private static String URL_DB = "jdbc:mysql://localhost:3306/";
-	protected static String DB = "proxy";
-	protected static String user = "root";
-	protected static String pass = "";
-	protected static Connection conn;
 
 	public ProxySet(int idPersona) {
 		super();

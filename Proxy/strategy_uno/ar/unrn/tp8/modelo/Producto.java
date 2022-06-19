@@ -15,7 +15,7 @@ public class Producto {
 	}
 
 	public double montoTotalDeProducto() {
-		
+
 		return this.cantidad * this.precioUnitario;
 
 	}
